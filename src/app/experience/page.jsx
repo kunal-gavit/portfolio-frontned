@@ -21,10 +21,11 @@ import {
   Flame
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getExperience } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 export default function ExperiencePage() {
-  const experienceList = getExperience();
+  const { experience: liveExperience } = usePortfolio();
+  const experienceList = liveExperience || [];
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [expandedId, setExpandedId] = useState('exp-mit-india-pod-volunteer');
 

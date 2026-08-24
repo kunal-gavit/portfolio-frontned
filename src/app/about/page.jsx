@@ -26,7 +26,8 @@ import {
   Mail
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getAbout, getProfile, getAcademicMilestones, getEducation } from '../../lib/data.js';
+import { getAbout, getAcademicMilestones } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 import { analytics } from '../../lib/analytics';
 
 const iconMap = {
@@ -43,10 +44,11 @@ const iconMap = {
 };
 
 export default function AboutPage() {
+  const { profile: liveProfile, education: liveEducation } = usePortfolio();
   const about = getAbout();
-  const profile = getProfile();
+  const profile = liveProfile || {};
   const academicMilestones = getAcademicMilestones();
-  const educationList = getEducation();
+  const educationList = liveEducation || [];
 
   const [imgSrc, setImgSrc] = useState(profile.profileImage || profile.image);
   const focusCards = about.highlights || [];

@@ -13,10 +13,12 @@ import {
   Building2
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getEducation, getAcademicMilestones } from '../../lib/data.js';
+import { getAcademicMilestones } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 export default function EducationPage() {
-  const educationList = getEducation();
+  const { education: liveEducation } = usePortfolio();
+  const educationList = liveEducation || [];
   const milestones = getAcademicMilestones();
 
   return (

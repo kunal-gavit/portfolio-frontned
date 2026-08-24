@@ -21,12 +21,13 @@ import {
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { sendContactMessage } from '../../lib/contactApi';
 import { analytics } from '../../lib/analytics';
-import { getProfile, getSocialLinks, getSocialLinksList } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 export default function ContactPage() {
-  const profile = getProfile();
-  const socials = getSocialLinks();
-  const socialList = getSocialLinksList();
+  const { profile: liveProfile, socialLinks: liveSocials, socialLinksList: liveSocialList } = usePortfolio();
+  const profile = liveProfile || {};
+  const socials = liveSocials || {};
+  const socialList = liveSocialList || [];
 
   const [formData, setFormData] = useState({
     name: '',

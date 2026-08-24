@@ -15,7 +15,7 @@ import {
   Wrench
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getServices } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 const iconMap = {
   Layout,
@@ -27,7 +27,8 @@ const iconMap = {
 };
 
 export default function ServicesPage() {
-  const servicesList = getServices();
+  const { services: liveServices } = usePortfolio();
+  const servicesList = liveServices || [];
 
   return (
     <div className="pt-28 pb-24 relative overflow-hidden">

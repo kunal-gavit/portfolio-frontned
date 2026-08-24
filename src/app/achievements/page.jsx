@@ -16,7 +16,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getAchievements } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 const iconMap = {
   Trophy,
@@ -28,7 +28,8 @@ const iconMap = {
 };
 
 export default function AchievementsPage() {
-  const achievements = getAchievements();
+  const { achievements: liveAchievements } = usePortfolio();
+  const achievements = liveAchievements || [];
 
   return (
     <div className="pt-28 pb-24 relative overflow-hidden">

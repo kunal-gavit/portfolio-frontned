@@ -15,10 +15,11 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getBlogs } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 export default function BlogListingPage() {
-  const allBlogs = getBlogs();
+  const { blogs: rawBlogs } = usePortfolio();
+  const allBlogs = (rawBlogs || []).filter((b) => b.status !== 'Draft' && b.published !== false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedTag, setSelectedTag] = useState('All');

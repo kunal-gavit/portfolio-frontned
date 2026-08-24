@@ -30,7 +30,8 @@ export default function ResumeRoute() {
     projects: projectsData,
   } = usePortfolio();
 
-  const resumeUrl = profile?.resumeDownloadUrl || profile?.directResumeUrl || profile?.resume || 'http://localhost:5000/api/profile/resume';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const resumeUrl = profile?.resumeDownloadUrl || profile?.directResumeUrl || profile?.resume || `${apiUrl}/profile/resume`;
   const resumeFilename = profile?.resumeFilename || 'Kunal_Gavit_Resume.pdf';
 
   const handleDownload = () => {

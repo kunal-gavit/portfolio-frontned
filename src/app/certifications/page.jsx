@@ -15,10 +15,12 @@ import {
   Sparkles
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getCertifications, getCertificationCategories } from '../../lib/data.js';
+import { getCertificationCategories } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 export default function CertificationsPage() {
-  const certifications = getCertifications();
+  const { certifications: liveCertifications } = usePortfolio();
+  const certifications = liveCertifications || [];
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCert, setSelectedCert] = useState(null);

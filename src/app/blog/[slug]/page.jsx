@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }) {
           <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400 pt-2 border-y border-zinc-800/80 py-4">
             <span className="flex items-center gap-1.5 text-zinc-200">
               <User className="w-3.5 h-3.5 text-purple-400" />
-              {blog.author || 'Kunal Gavit'}
+              {typeof blog.author === 'object' && blog.author ? (blog.author.name || 'Kunal Gavit') : (blog.author || 'Kunal Gavit')}
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">

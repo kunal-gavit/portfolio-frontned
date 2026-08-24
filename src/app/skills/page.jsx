@@ -38,7 +38,7 @@ import {
   Filter
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getSkills } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 const iconMap = {
   Code2,
@@ -73,7 +73,8 @@ const iconMap = {
 };
 
 export default function SkillsPage() {
-  const skillCategories = getSkills();
+  const { skills: liveSkills } = usePortfolio();
+  const skillCategories = liveSkills || [];
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 

@@ -19,11 +19,12 @@ import {
 } from 'lucide-react';
 import { sendContactMessage } from '../lib/contactApi';
 import { analytics } from '../lib/analytics';
-import { getProfile, getSocialLinks } from '../lib/data.js';
+import { usePortfolio } from '../context/PortfolioContext';
 
 export const Contact = () => {
-  const profile = getProfile();
-  const socials = getSocialLinks();
+  const { profile: liveProfile, socialLinks: liveSocials } = usePortfolio();
+  const profile = liveProfile || {};
+  const socials = liveSocials || {};
 
   const [formData, setFormData] = useState({
     name: '',

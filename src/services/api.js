@@ -12,9 +12,11 @@ async function fetchJson(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
   try {
     const res = await fetch(url, {
+      cache: 'no-store',
       ...options,
       headers: {
         'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
         ...(options.headers || {}),
       },
     });

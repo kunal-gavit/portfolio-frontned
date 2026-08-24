@@ -17,10 +17,11 @@ import {
   Filter
 } from 'lucide-react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { getHackathons } from '../../lib/data.js';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 export default function HackathonsPage() {
-  const allHackathons = getHackathons();
+  const { hackathons: allHackathonsFromContext } = usePortfolio();
+  const allHackathons = (allHackathonsFromContext || []).filter((h) => h.status !== 'Draft' && h.publishStatus !== 'Draft');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState('All');
   const [onlyFeatured, setOnlyFeatured] = useState(false);
