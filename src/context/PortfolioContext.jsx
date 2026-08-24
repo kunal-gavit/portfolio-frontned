@@ -86,31 +86,31 @@ export const PortfolioProvider = ({ children }) => {
         setProfile((prev) => ({ ...prev, ...profileRes.value.data }));
       }
       if (projectsRes.status === 'fulfilled' && projectsRes.value?.success && Array.isArray(projectsRes.value.data)) {
-        setProjects(projectsRes.value.data);
+        setProjects(projectsRes.value.data.length > 0 ? projectsRes.value.data : getFallbackProjects());
       }
       if (skillsRes.status === 'fulfilled' && skillsRes.value?.success && Array.isArray(skillsRes.value.data)) {
-        setSkills(skillsRes.value.data);
+        setSkills(skillsRes.value.data.length > 0 ? skillsRes.value.data : getFallbackSkills());
       }
       if (hackathonsRes.status === 'fulfilled' && hackathonsRes.value?.success && Array.isArray(hackathonsRes.value.data)) {
-        setHackathons(hackathonsRes.value.data);
+        setHackathons(hackathonsRes.value.data.length > 0 ? hackathonsRes.value.data : getFallbackHackathons());
       }
       if (certsRes.status === 'fulfilled' && certsRes.value?.success && Array.isArray(certsRes.value.data)) {
-        setCertifications(certsRes.value.data);
+        setCertifications(certsRes.value.data.length > 0 ? certsRes.value.data : getFallbackCertifications());
       }
       if (expRes.status === 'fulfilled' && expRes.value?.success && Array.isArray(expRes.value.data)) {
-        setExperience(expRes.value.data);
+        setExperience(expRes.value.data.length > 0 ? expRes.value.data : getFallbackExperience());
       }
       if (eduRes.status === 'fulfilled' && eduRes.value?.success && Array.isArray(eduRes.value.data)) {
-        setEducation(eduRes.value.data);
+        setEducation(eduRes.value.data.length > 0 ? eduRes.value.data : getFallbackEducation());
       }
       if (achRes.status === 'fulfilled' && achRes.value?.success && Array.isArray(achRes.value.data)) {
-        setAchievements(achRes.value.data);
+        setAchievements(achRes.value.data.length > 0 ? achRes.value.data : getFallbackAchievements());
       }
       if (svcRes.status === 'fulfilled' && svcRes.value?.success && Array.isArray(svcRes.value.data)) {
-        setServices(svcRes.value.data);
+        setServices(svcRes.value.data.length > 0 ? svcRes.value.data : getFallbackServices());
       }
       if (blogRes.status === 'fulfilled' && blogRes.value?.success && Array.isArray(blogRes.value.data)) {
-        setBlogs(blogRes.value.data);
+        setBlogs(blogRes.value.data.length > 0 ? blogRes.value.data : getFallbackBlogs());
       }
       if (statsRes.status === 'fulfilled' && statsRes.value?.success && Array.isArray(statsRes.value.data)) {
         setStats(statsRes.value.data);
@@ -136,63 +136,63 @@ export const PortfolioProvider = ({ children }) => {
           case 'projects': {
             const res = await api.getProjects();
             if (res?.success && Array.isArray(res.data)) {
-              setProjects(res.data);
+              setProjects(res.data.length > 0 ? res.data : getFallbackProjects());
             }
             break;
           }
           case 'skills': {
             const res = await api.getSkills();
             if (res?.success && Array.isArray(res.data)) {
-              setSkills(res.data);
+              setSkills(res.data.length > 0 ? res.data : getFallbackSkills());
             }
             break;
           }
           case 'hackathons': {
             const res = await api.getHackathons();
             if (res?.success && Array.isArray(res.data)) {
-              setHackathons(res.data);
+              setHackathons(res.data.length > 0 ? res.data : getFallbackHackathons());
             }
             break;
           }
           case 'certifications': {
             const res = await api.getCertifications();
             if (res?.success && Array.isArray(res.data)) {
-              setCertifications(res.data);
+              setCertifications(res.data.length > 0 ? res.data : getFallbackCertifications());
             }
             break;
           }
           case 'experience': {
             const res = await api.getExperience();
             if (res?.success && Array.isArray(res.data)) {
-              setExperience(res.data);
+              setExperience(res.data.length > 0 ? res.data : getFallbackExperience());
             }
             break;
           }
           case 'education': {
             const res = await api.getEducation();
             if (res?.success && Array.isArray(res.data)) {
-              setEducation(res.data);
+              setEducation(res.data.length > 0 ? res.data : getFallbackEducation());
             }
             break;
           }
           case 'achievements': {
             const res = await api.getAchievements();
             if (res?.success && Array.isArray(res.data)) {
-              setAchievements(res.data);
+              setAchievements(res.data.length > 0 ? res.data : getFallbackAchievements());
             }
             break;
           }
           case 'services': {
             const res = await api.getServices();
             if (res?.success && Array.isArray(res.data)) {
-              setServices(res.data);
+              setServices(res.data.length > 0 ? res.data : getFallbackServices());
             }
             break;
           }
           case 'blogs': {
             const res = await api.getBlogs();
             if (res?.success && Array.isArray(res.data)) {
-              setBlogs(res.data);
+              setBlogs(res.data.length > 0 ? res.data : getFallbackBlogs());
             }
             break;
           }
